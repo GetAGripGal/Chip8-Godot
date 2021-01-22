@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://MainMenu.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="MainMenu"]
+visible = true
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 919.0
+margin_bottom = 588.0
+rect_scale = Vector2( 0.2, 0.2 )
+theme = SubResource( 5 )
+window_title = ""
+dialog_text = "Pick your rom"
+mode = 0
+access = 2
+current_dir = "/run/media/comlarsic/9CC2-5E4B/Projects/godot/Chip-8-Emulator"
+current_path = "/run/media/comlarsic/9CC2-5E4B/Projects/godot/Chip-8-Emulator/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open Rom" type="MenuButton" parent="MainMenu"]
+margin_left = -4.0
+margin_right = 76.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Open Rom"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Run" type="MenuButton" parent="MainMenu"]
+margin_top = 16.0
+margin_right = 36.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Run"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedFile" type="RichTextLabel" parent="MainMenu"]
+margin_left = 4.0
+margin_top = 104.0
+margin_right = 116.0
+margin_bottom = 124.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "No File Selected"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MainMenu/Open Rom" to="." method="OpenRom"]
+[connection signal="pressed" from="MainMenu/Run" to="." method="Run"]
